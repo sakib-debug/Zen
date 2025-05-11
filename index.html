@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Zen Japanese Education Consultancy (ZJEC)</title>
+            <link rel="icon" href="icon.png" type="image/png">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #000;
+            color: #fff;
+        }
+        header, footer {
+            background-color: #111;
+            color: white;
+            text-align: center;
+            padding: 15px;
+        }
+        header img.logo {
+            width: 80px;
+            margin-bottom: 10px;
+        }
+        header h1 {
+            margin: 10px 0;
+            font-size: 1.8em;
+            color: orange;
+        }
+        nav {
+            background: #111;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 10px;
+        }
+        nav a {
+            color: orange;
+            margin: 5px 10px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        .banner img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        section {
+            padding: 20px;
+            max-width: 1000px;
+            margin: auto;
+        }
+        section h2 {
+            color: orange;
+            border-bottom: 2px solid orange;
+            padding-bottom: 8px;
+            margin-bottom: 15px;
+        }
+        .content-box {
+            background: rgba(20, 20, 20, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+        }
+        footer p {
+            font-size: 0.9em;
+        }
+        .language-switcher {
+    text-align: right;
+    margin: 10px;
+}
+button.lang-btn {
+    background: orange;
+    color: black;
+    border: none;
+    padding: 5px 10px;
+    margin-left: 5px;
+    cursor: pointer;
+    border-radius: 5px;
+    height: 28px;
+    width: 90px;          /* fixed width: both buttons same size */
+    text-align: center;
+}
+        form input, form select, form textarea {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0 10px;
+            border: 1px solid #555;
+            border-radius: 5px;
+            background: #222;
+            color: white;
+        }
+        form button {
+            background: orange;
+            color: black;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        form button:hover {
+            background: #e69500;
+        }
+        @media (max-width: 600px) {
+            nav {
+                flex-direction: column;
+            }
+            header h1 {
+                font-size: 1.4em;
+            }
+        }
+/* Back to Top Button */
+        #backToTop {
+            display: none;
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 99;
+            background: orange;
+            color: black;
+            border: none;
+            outline: none;
+            padding: 12px 18px;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+            transition: background 0.3s, transform 0.3s;
+        }
+        #backToTop:hover {
+            background: #e69500;
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+
+<div class="language-switcher">
+    <button class="lang-btn" onclick="switchLang('en')">English</button>
+    <button class="lang-btn" onclick="switchLang('jp')">日本語</button>
+</div>
+
+<header>
+    <img src="logo.png" alt="ZJEC Logo" class="logo">
+    <h1 id="title">Zen Japanese Education Consultancy (ZJEC)</h1>
+    <p id="subtitle">Empowering Your Future with Japanese Language & Education</p>
+</header>
+
+<div class="banner">
+    <img src="banner.png" alt="Student Visa Japan Banner">
+</div>
+
+<nav>
+    <a href="#about" id="nav-about">About Us</a>
+    <a href="#services" id="nav-services">Services</a>
+    <a href="#contact" id="nav-contact">Contact</a>
+    <a href="#address" id="nav-address">Address</a>
+    <a href="zen-ai.html" target="_blank">Zen AI</a>
+</nav>
+
+<section id="about">
+    <div class="content-box">
+        <h2 id="about-title">About Us</h2>
+        <p id="about-text">At Zen Japanese Education Consultancy (ZJEC), we believe that education and cultural exchange open doors to a brighter future. Our mission is to serve as a bridge between Bangladesh and Japan, providing comprehensive support for students, professionals, and families who aspire to study, work, or build a life in Japan.
+
+Founded by experts with deep knowledge of both countries’ educational and professional landscapes, ZJEC offers personalized guidance, ensuring that every client feels confident and well-prepared for their journey. We understand that studying or working abroad is not just a paperwork process — it’s a life-changing experience. That’s why we go beyond basic services, offering cultural insights, language support, and career counseling to help our clients thrive both in Japan and internationally.
+
+Whether you are a student aiming to enter a Japanese language school, a skilled worker looking for new career opportunities, or a family seeking a better future, ZJEC is here to guide you every step of the way. Our commitment to integrity, transparency, and client success has made us a trusted name in Bangladesh and Japan.</p>
+    </div>
+</section>
+
+<section id="services">
+    <div class="content-box">
+        <h2 id="services-title">Our Services</h2>
+        <div id="services-list">
+            
+            <br><br>At ZJEC, we are proud to offer a wide range of services tailored to meet the individual goals and dreams of each client. Our team works closely with you to understand your unique situation and provide the right solutions. Here’s what we offer:
+<br>
+✅ Japanese Language Courses (N5–N3):
+We offer expert-led Japanese language classes, helping you prepare for JLPT levels N5 to N3, ensuring you gain the communication skills necessary for study or work in Japan.
+<br>
+✅ Student & Job Visa Assistance:
+From document preparation to embassy submissions, we provide full support to help you secure your student or work visa without stress.
+<br>
+✅ JLPT & NAT Test Preparation:
+Our intensive courses and practice exams prepare you thoroughly for the Japanese Language Proficiency Test (JLPT) and the NAT Test.
+<br>
+✅ Interview & Resume Coaching:
+We help you create a professional Japanese-style resume (rirekisho) and prepare you for job interviews, so you make the best impression on Japanese employers.
+<br>
+✅ Educational & Career Counseling:
+Our experienced counselors guide you in choosing the right educational institution or career path, offering personalized advice based on your background and goals.
+<br>
+✅ Air Ticket & Travel Support:
+We assist you with flight bookings and pre-departure arrangements, ensuring a smooth transition to Japan.
+<br>
+✅ Post-Arrival Support:
+Our help doesn’t stop after you arrive — we assist with finding housing, understanding local systems, and adjusting to life in Japan.
+        </div>
+    </div>
+</section>
+
+<section id="contact">
+    <div class="content-box">
+        <h2 id="contact-title">Online Application / Contact Form</h2>
+        <form action="https://formspree.io/f/mwkdbgqn" method="POST">
+            <label id="form-name-label">Name:</label>
+            <input type="text" name="name" required>
+            <label id="form-email-label">Email:</label>
+            <input type="email" name="email" required>
+            <label id="form-phone-label">Phone Number:</label>
+            <input type="text" name="phone">
+            <label id="form-service-label">Select Service:</label>
+            <select name="service">
+                <option value="language-course">Language Course</option>
+                <option value="visa-support">Visa Support</option>
+                <option value="counseling">Counseling</option>
+            </select>
+            <label id="form-message-label">Message / Details:</label>
+            <textarea name="message" rows="4" required></textarea>
+            <button type="submit" id="form-submit-btn">Submit Application</button>
+        </form>
+    </div>
+</section>
+
+<section id="address">
+    <div class="content-box">
+        <h2 id="address-title">Our Address</h2>
+        <h3 id="address-bd-title">For Bangladesh:</h3>
+        <p id="address-bd-text">• 34/1, Sonargaon Complex (4th floor), Bir-uttom Atm Haeder Road, North Zatrabari, Dhaka 1204, Bangladesh.<br>
+        • Mobile Number: +880 1833039792<br>
+        • Email: <a href="mailto:zenjapaneseec@gmail.com" style="color: orange;">zenjapaneseec@gmail.com</a><br>
+        • Facebook Page: <a href="https://www.facebook.com/share/16GnePUSpb/" target="_blank" style="color: orange;">Facebook Bangladesh</a></p>
+        
+        <h3 id="address-jp-title">For Japan:</h3>
+        <p id="address-jp-text">• あすかパレス, 205 号, 1-chōme-18-6 Nakadai, Itabashi City, Tokyo 174-0064, Japan.<br>
+        • Mobile Number: +81 7032488083<br>
+        • Email: <a href="mailto:zenjapaneseec@gmail.com" style="color: orange;">zenjapaneseec@gmail.com</a><br>
+        • Facebook Page: <a href="https://www.facebook.com/profile.php?id=61575667352295&mibextid=wwXIfr" target="_blank" style="color: orange;">Facebook Japan</a></p>
+    </div>
+</section>
+
+<footer>
+    <p>&copy; 2025 Zen Japanese Education Consultancy (ZJEC). All rights reserved.</p>
+</footer>
+<!-- Back to Top Button -->
+<button id="backToTop" onclick="scrollToTop()">↑ Top</button>
+
+<script>
+    const langData = {
+        en: {
+            title: "Zen Japanese Education Consultancy (ZJEC)",
+            subtitle: "Empowering Your Future with Japanese Language & Education",
+            navAbout: "About Us",
+            navServices: "Services",
+            navContact: "Contact",
+            navAddress: "Address",
+            aboutTitle: "About Us",
+            aboutText: "At Zen Japanese Education Consultancy (ZJEC), we believe that education and cultural exchange open doors to a brighter future. Our mission is to serve as a bridge between Bangladesh and Japan, providing comprehensive support for students, professionals, and families who aspire to study, work, or build a life in Japan.\n\nFounded by experts with deep knowledge of both countries’ educational and professional landscapes, ZJEC offers personalized guidance, ensuring that every client feels confident and well-prepared for their journey. We understand that studying or working abroad is not just a paperwork process — it’s a life-changing experience. That’s why we go beyond basic services, offering cultural insights, language support, and career counseling to help our clients thrive both in Japan and internationally.\n\nWhether you are a student aiming to enter a Japanese language school, a skilled worker looking for new career opportunities, or a family seeking a better future, ZJEC is here to guide you every step of the way. Our commitment to integrity, transparency, and client success has made us a trusted name in Bangladesh and Japan.",
+            servicesTitle: "Our Services",
+            servicesList: "✅ Japanese Language Courses (N5–N3):\nWe offer expert-led Japanese language classes, helping you prepare for JLPT levels N5 to N3.\n\n✅ Student & Job Visa Assistance:\nFull support to help you secure your student or work visa.\n\n✅ JLPT & NAT Test Preparation:\nIntensive courses and practice exams to prepare for the Japanese Language Proficiency Test (JLPT) and the NAT Test.\n\n✅ Interview & Resume Coaching:\nHelp with professional Japanese-style resumes and interview preparation.\n\n✅ Educational & Career Counseling:\nGuidance in choosing the right educational institution or career path.\n\n✅ Air Ticket & Travel Support:\nAssistance with flight bookings and pre-departure arrangements.\n\n✅ Post-Arrival Support:\nHelp with housing, local systems, and adjusting to life in Japan.",
+            contactTitle: "Online Application / Contact Form",
+            formNameLabel: "Name:",
+            formEmailLabel: "Email:",
+            formPhoneLabel: "Phone Number:",
+            formServiceLabel: "Select Service:",
+            formMessageLabel: "Message / Details:",
+            formSubmitBtn: "Submit Application",
+            addressTitle: "Our Address",
+            addressBdTitle: "For Bangladesh:",
+            addressBdText: "• 34/1, Sonargaon Complex (4th floor), Dhaka 1204, Bangladesh.<br>• Mobile: +880 1833039792<br>• Email: zenjapaneseec@gmail.com",
+            addressJpTitle: "For Japan:",
+            addressJpText: "• Asuka Palace, Room 205, 1-chōme-18-6 Nakadai, Itabashi City, Tokyo 174-0064, Japan.<br>• Mobile: +81 7032488083<br>• Email: zenjapaneseec@gmail.com"
+        },
+        jp: {
+            title: "Zen Japanese Education Consultancy (ZJEC)",
+            subtitle: "日本語教育と進学の夢をサポートします",
+            navAbout: "私たちについて",
+            navServices: "サービス",
+            navContact: "お問い合わせ",
+            navAddress: "住所",
+            aboutTitle: "私たちについて",
+            aboutText: "Zen Japanese Education Consultancy (ZJEC) は、教育と文化交流が未来を開くと信じています。私たちはバングラデシュと日本をつなぎ、学び、働き、暮らしたい方々を全面サポートします。\n\n経験豊富な専門家が、個別にガイダンスを行い、自信を持って準備できるようお手伝いします。海外での挑戦は人生を変える経験。文化理解、語学支援、キャリア相談まで、幅広く支援します。\n\n学生、専門職、家族の皆様、ZJEC はあなたの夢を全力で応援します。",
+            servicesTitle: "サービス内容",
+            servicesList: "✅ 日本語コース（N5〜N3）:\nJLPT N5〜N3 レベルの日本語クラス。\n\n✅ 学生・就労ビザサポート:\nビザ取得の全面サポート。\n\n✅ JLPT・NAT試験対策:\n集中講座と模擬試験。\n\n✅ 面接・履歴書指導:\n日本式履歴書作成と面接対策。\n\n✅ 進学・キャリア相談:\n最適な学校・キャリア選択のアドバイス。\n\n✅ 航空券・渡航サポート:\n航空券手配と出発前準備。\n\n✅ 到着後サポート:\n住居探し、生活サポート、現地システム理解。",
+            contactTitle: "オンライン申し込み・お問い合わせ",
+            formNameLabel: "お名前：",
+            formEmailLabel: "メール：",
+            formPhoneLabel: "電話番号：",
+            formServiceLabel: "サービス選択：",
+            formMessageLabel: "メッセージ・詳細：",
+            formSubmitBtn: "申し込む",
+            addressTitle: "住所",
+            addressBdTitle: "バングラデシュの場合：",
+            addressBdText: "• 34/1, ソナルガオンコンプレックス（4階）、ダッカ1204、バングラデシュ。<br>• 携帯：+880 1833039792<br>• メール：zenjapaneseec@gmail.com",
+            addressJpTitle: "日本の場合：",
+            addressJpText: "• あすかパレス, 205号室, 東京都板橋区中台1丁目18-6, 174-0064, 日本。<br>• 携帯：+81 7032488083<br>• メール：zenjapaneseec@gmail.com"
+        }
+    };
+
+    function switchLang(lang) {
+        document.getElementById('title').innerText = langData[lang].title;
+        document.getElementById('subtitle').innerText = langData[lang].subtitle;
+        document.getElementById('nav-about').innerText = langData[lang].navAbout;
+        document.getElementById('nav-services').innerText = langData[lang].navServices;
+        document.getElementById('nav-contact').innerText = langData[lang].navContact;
+        document.getElementById('nav-address').innerText = langData[lang].navAddress;
+        document.getElementById('about-title').innerText = langData[lang].aboutTitle;
+        document.getElementById('about-text').innerText = langData[lang].aboutText;
+        document.getElementById('services-title').innerText = langData[lang].servicesTitle;
+        document.getElementById('services-list').innerText = langData[lang].servicesList;
+        document.getElementById('contact-title').innerText = langData[lang].contactTitle;
+        document.getElementById('form-name-label').innerText = langData[lang].formNameLabel;
+        document.getElementById('form-email-label').innerText = langData[lang].formEmailLabel;
+        document.getElementById('form-phone-label').innerText = langData[lang].formPhoneLabel;
+        document.getElementById('form-service-label').innerText = langData[lang].formServiceLabel;
+        document.getElementById('form-message-label').innerText = langData[lang].formMessageLabel;
+        document.getElementById('form-submit-btn').innerText = langData[lang].formSubmitBtn;
+        document.getElementById('address-title').innerText = langData[lang].addressTitle;
+        document.getElementById('address-bd-title').innerText = langData[lang].addressBdTitle;
+        document.getElementById('address-bd-text').innerHTML = langData[lang].addressBdText;
+        document.getElementById('address-jp-title').innerText = langData[lang].addressJpTitle;
+        document.getElementById('address-jp-text').innerHTML = langData[lang].addressJpText;
+    }
+
+        // Show/hide Back to Top button
+    window.onscroll = function() {
+        const btn = document.getElementById('backToTop');
+        if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+            btn.style.display = "block";
+        } else {
+            btn.style.display = "none";
+        }
+    };
+
+    // Scroll smoothly to top
+    function scrollToTop() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+</script>
