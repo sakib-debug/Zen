@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>Katakana 46 Audio</title>
+
+<style>
+body{
+  margin:0;
+  padding:0;
+  font-family: Arial, sans-serif;
+  background:#4195a5;
+  color:white;
+  overflow-x:hidden;
+}
+
+h1{
+  text-align:center;
+  padding:20px;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(90px,1fr));
+  gap:15px;
+  padding:20px;
+}
+
+.card{
+  background:#ffcc80;
+  color:#000;
+  padding:18px 8px;
+  border-radius:12px;
+  text-align:center;
+  cursor:pointer;
+  font-size:28px;
+  font-weight:bold;
+}
+
+.info{
+  font-size:13px;
+  margin-top:6px;
+  display:none;
+}
+
+/* FOOTER */
+.footer{
+  width:100%;
+  background:linear-gradient(135deg,#f5c16c,#4195a5);
+  padding:40px 10px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  box-shadow:0 -6px 18px rgba(0,0,0,0.45);
+}
+
+.footer-content{
+  max-width:700px;
+}
+
+.footer-content .created{
+  font-size:13px;
+  color:#fff4dc;
+  letter-spacing:2px;
+  margin:0;
+}
+
+.footer-content h2{
+  margin:12px 0;
+  font-size:24px;
+  color:#ffffff;
+  letter-spacing:1.5px;
+}
+
+.footer-content .title{
+  font-size:14px;
+  color:#ffffff;
+  line-height:1.7;
+  margin:0;
+}
+
+.footer-content span{
+  color:#ffe08a;
+  font-weight:bold;
+}
+</style>
+</head>
+
+<body>
+
+<h1>Katakana 46 🔊 (Japanese Audio)</h1>
+
+<div class="grid">
+
+<div class="card" onclick="play(this,'ア')">ア<div class="info">আ | a</div></div>
+<div class="card" onclick="play(this,'イ')">イ<div class="info">ই | i</div></div>
+<div class="card" onclick="play(this,'ウ')">ウ<div class="info">উ | u</div></div>
+<div class="card" onclick="play(this,'エ')">エ<div class="info">এ | e</div></div>
+<div class="card" onclick="play(this,'オ')">オ<div class="info">ও | o</div></div>
+
+<div class="card" onclick="play(this,'カ')">カ<div class="info">কা | ka</div></div>
+<div class="card" onclick="play(this,'キ')">キ<div class="info">কি | ki</div></div>
+<div class="card" onclick="play(this,'ク')">ク<div class="info">কু | ku</div></div>
+<div class="card" onclick="play(this,'ケ')">ケ<div class="info">কে | ke</div></div>
+<div class="card" onclick="play(this,'コ')">コ<div class="info">কো | ko</div></div>
+
+<div class="card" onclick="play(this,'サ')">サ<div class="info">সা | sa</div></div>
+<div class="card" onclick="play(this,'シ')">シ<div class="info">শি | shi</div></div>
+<div class="card" onclick="play(this,'ス')">ス<div class="info">সু | su</div></div>
+<div class="card" onclick="play(this,'セ')">セ<div class="info">সে | se</div></div>
+<div class="card" onclick="play(this,'ソ')">ソ<div class="info">সো | so</div></div>
+
+<div class="card" onclick="play(this,'タ')">タ<div class="info">তা | ta</div></div>
+<div class="card" onclick="play(this,'チ')">チ<div class="info">চি | chi</div></div>
+<div class="card" onclick="play(this,'ツ')">ツ<div class="info">ৎসু | tsu</div></div>
+<div class="card" onclick="play(this,'テ')">テ<div class="info">তে | te</div></div>
+<div class="card" onclick="play(this,'ト')">ト<div class="info">তো | to</div></div>
+
+<div class="card" onclick="play(this,'ナ')">ナ<div class="info">না | na</div></div>
+<div class="card" onclick="play(this,'ニ')">ニ<div class="info">নি | ni</div></div>
+<div class="card" onclick="play(this,'ヌ')">ヌ<div class="info">নু | nu</div></div>
+<div class="card" onclick="play(this,'ネ')">ネ<div class="info">নে | ne</div></div>
+<div class="card" onclick="play(this,'ノ')">ノ<div class="info">নো | no</div></div>
+
+<div class="card" onclick="play(this,'ハ')">ハ<div class="info">হা | ha</div></div>
+<div class="card" onclick="play(this,'ヒ')">ヒ<div class="info">হি | hi</div></div>
+<div class="card" onclick="play(this,'フ')">フ<div class="info">ফু | fu</div></div>
+<div class="card" onclick="play(this,'ヘ')">ヘ<div class="info">হে | he</div></div>
+<div class="card" onclick="play(this,'ホ')">ホ<div class="info">হো | ho</div></div>
+
+<div class="card" onclick="play(this,'マ')">マ<div class="info">মা | ma</div></div>
+<div class="card" onclick="play(this,'ミ')">ミ<div class="info">মি | mi</div></div>
+<div class="card" onclick="play(this,'ム')">ム<div class="info">মু | mu</div></div>
+<div class="card" onclick="play(this,'メ')">メ<div class="info">মে | me</div></div>
+<div class="card" onclick="play(this,'モ')">モ<div class="info">মো | mo</div></div>
+
+<div class="card" onclick="play(this,'ヤ')">ヤ<div class="info">ইয়া | ya</div></div>
+<div class="card" onclick="play(this,'ユ')">ユ<div class="info">ইউ | yu</div></div>
+<div class="card" onclick="play(this,'ヨ')">ヨ<div class="info">ইয়ো | yo</div></div>
+
+<div class="card" onclick="play(this,'ラ')">ラ<div class="info">রা | ra</div></div>
+<div class="card" onclick="play(this,'リ')">リ<div class="info">রি | ri</div></div>
+<div class="card" onclick="play(this,'ル')">ル<div class="info">রু | ru</div></div>
+<div class="card" onclick="play(this,'レ')">レ<div class="info">রে | re</div></div>
+<div class="card" onclick="play(this,'ロ')">ロ<div class="info">রো | ro</div></div>
+
+<div class="card" onclick="play(this,'ワ')">ワ<div class="info">ওয়া | wa</div></div>
+<div class="card" onclick="play(this,'ヲ')">ヲ<div class="info">ও | wo</div></div>
+<div class="card" onclick="play(this,'ン')">ン<div class="info">ন | n</div></div>
+
+</div>
+
+<footer class="footer">
+  <div class="footer-content">
+    <p class="created">Created by</p>
+    <h2>MD NAZMUS SAKIB</h2>
+    <p class="title">
+      President &amp; Founder<br>
+      <span>ZEN Japanese Education Consultancy</span>
+    </p>
+  </div>
+</footer>
+
+<script>
+function play(card,jp){
+  const info = card.querySelector(".info");
+  info.style.display = info.style.display==="block"?"none":"block";
+
+  const u = new SpeechSynthesisUtterance(jp);
+  u.lang="ja-JP";
+  speechSynthesis.cancel();
+  speechSynthesis.speak(u);
+}
+</script>
+
+</body>
+</html>
