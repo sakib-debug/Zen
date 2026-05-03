@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ZEN N5 Kanji Learning System</title>
+
+<!-- Hanzi Writer -->
+<script src="https://cdn.jsdelivr.net/npm/hanzi-writer@2.0/dist/hanzi-writer.min.js"></script>
+
+<style>
+body{
+    margin:0;
+    font-family:Segoe UI,sans-serif;
+    background:#4195a5;
+    color:white;
+}
+
+header{
+    background:linear-gradient(135deg,#4d0d0d,#4195a5);
+    padding:20px;
+    text-align:center;
+}
+
+header h1{
+    margin:0;
+    font-size:28px;
+}
+
+header p{
+    margin:5px 0;
+}
+
+.main{
+    display:flex;
+    height:calc(100vh - 170px);
+}
+
+/* LEFT SIDE */
+.left{
+    width:50%;
+    overflow-y:auto;
+    padding:15px;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(70px,1fr));
+    gap:10px;
+}
+
+.box{
+    background:#f5c16c;
+    color:black;
+    font-size:24px;
+    padding:12px;
+    border-radius:8px;
+    text-align:center;
+    cursor:pointer;
+    font-weight:bold;
+    transition:.3s;
+}
+
+.box:hover{
+    transform:scale(1.08);
+    background:#ffd98d;
+}
+
+/* RIGHT PANEL */
+.right{
+    width:50%;
+    background:rgba(7, 7, 7, 0.95);
+    color:rgb(246, 244, 244);
+    padding:25px;
+    box-sizing:border-box;
+    overflow-y:auto;
+    backdrop-filter:blur(10px);
+}
+
+/* BIG KANJI */
+#kanjiChar{
+    font-size:90px;
+    margin:0;
+    color:#4195a5;
+    font-weight:bold;
+    text-shadow:0 4px 10px rgba(0,0,0,0.08);
+}
+
+/* PREMIUM BOX STROKE AREA */
+#strokeArea{
+    width:320px;
+    height:320px;
+    margin:25px auto;
+    background:linear-gradient(145deg,#ce800c,#ce800c);
+    border-radius:22px;   /* box with soft corners */
+    border:4px dashed rgba(25, 120, 5, 0.8);
+
+    box-shadow:
+        inset 0 8px 18px rgba(255,255,255,0.9),
+        inset 0 -8px 18px rgba(0,0,0,0.05),
+        0 15px 35px rgba(0,0,0,0.18);
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+    transition:all .35s ease;
+}
+
+/* Hover effect */
+#strokeArea:hover{
+    transform:translateY(-5px) scale(1.03);
+    box-shadow:
+        inset 0 8px 18px rgba(255,255,255,0.9),
+        inset 0 -8px 18px rgba(0,0,0,0.05),
+        0 22px 45px rgba(0,0,0,0.22);
+}
+
+/* TEXT STYLE */
+.infoText{
+    font-size:22px;
+    margin:10px 0;
+    font-weight:600;
+}
+
+/* PREMIUM BUTTON */
+button{
+    padding:14px 28px;
+    background:linear-gradient(135deg,#4195a5,#2f7d8b);
+    color:white;
+    border:none;
+    border-radius:40px;
+    cursor:pointer;
+    margin-top:15px;
+    font-size:18px;
+    font-weight:bold;
+    box-shadow:0 10px 20px rgba(0,0,0,0.18);
+    transition:.3s;
+}
+
+button:hover{
+    transform:translateY(-3px);
+    box-shadow:0 14px 28px rgba(0,0,0,0.22);
+}
+
+/* MOBILE */
+@media(max-width:900px){
+.right{
+    width:100%;
+}
+
+#strokeArea{
+    width:260px;
+    height:260px;
+}
+
+#kanjiChar{
+    font-size:75px;
+}
+}}
+}footer{
+    background:linear-gradient(135deg,#f5c16c,#4195a5);
+    padding:15px;
+    text-align:center;
+}
+
+@media(max-width:900px){
+.main{
+    flex-direction:column;
+    height:auto;
+}
+.left,.right{
+    width:100%;
+}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>ZEN Japanese Education Consultancy</h1>
+<p>Created By: MD NAZMUS SAKIB</p>
+<p>JLPT N5 Complete Kanji System</p>
+</header>
+
+<div class="main">
+
+<!-- LEFT -->
+<div class="left">
+<div class="grid" id="kanjiGrid"></div>
+</div>
+
+<!-- RIGHT -->
+<div class="right">
+<center>
+<h1 id="kanjiChar">日</h1>
+
+<div id="strokeArea"></div>
+
+<p class="infoText" id="meaningEn">English: Day / Sun</p>
+<p class="infoText" id="meaningBn">বাংলা: দিন / সূর্য</p>
+<p class="infoText" id="pronounce">উচ্চারণ: নি / হিচি</p>
+
+<button onclick="playAudio()">🔊 Slow Voice</button>
+</center>
+</div>
+
+</div>
+
+<footer>
+© 2026 ZEN Japanese Education Consultancy
+</footer>
+
+<script>
+
+const kanjiData = [
+
+{k:"一", en:"One", bn:"এক", pr:"ইচি"},
+{k:"二", en:"Two", bn:"দুই", pr:"নি"},
+{k:"三", en:"Three", bn:"তিন", pr:"সান"},
+{k:"四", en:"Four", bn:"চার", pr:"ইয়ন / শি"},
+{k:"五", en:"Five", bn:"পাঁচ", pr:"গো"},
+{k:"六", en:"Six", bn:"ছয়", pr:"রোকু"},
+{k:"七", en:"Seven", bn:"সাত", pr:"নানা / শিচি"},
+{k:"八", en:"Eight", bn:"আট", pr:"হাচি"},
+{k:"九", en:"Nine", bn:"নয়", pr:"কিউ"},
+{k:"十", en:"Ten", bn:"দশ", pr:"জু"},
+{k:"百", en:"Hundred", bn:"একশো", pr:"হিয়াকু"},
+{k:"千", en:"Thousand", bn:"হাজার", pr:"ছেন"},
+{k:"万", en:"Ten Thousand", bn:"দশ হাজার", pr:"মান"},
+
+{k:"日", en:"Day / Sun", bn:"দিন / সূর্য", pr:"হি /  নিচি "},
+{k:"月", en:"Moon / Month", bn:"চাঁদ / মাস", pr:"ৎসুকি  / গেতসু"},
+{k:"火", en:"Fire", bn:"আগুন", pr:"হি  / কা"},
+{k:"水", en:"Water", bn:"পানি", pr:"মিজু  / সুই"},
+{k:"木", en:"Tree", bn:"গাছ", pr:"কি  / মোকু"},
+{k:"金", en:"Gold / Money", bn:"সোনা / টাকা", pr:"কিন / কানে"},
+{k:"土", en:"Soil", bn:"মাটি", pr:"ৎসুচি  / দো"},
+{k:"年", en:"Year", bn:"বছর", pr:"তসি / নেন"},
+{k:"時", en:"Time", bn:"সময়", pr:"জি"},
+{k:"分", en:"Minute", bn:"মিনিট", pr:"ফুন / পুন"},
+{k:"半", en:"Half", bn:"অর্ধেক", pr:"হান"},
+{k:"今", en:"Now", bn:"এখন", pr:"ইমা"},
+{k:"午", en:"Noon", bn:"বিকেল", pr:"উমা / গো"},
+{k:"前", en:"Before", bn:"আগে", pr:"মায়ে"},
+{k:"後", en:"After", bn:"পরে", pr:"গো / আতো"},
+{k:"毎", en:"Every", bn:"প্রতি", pr:"মাই"},
+{k:"週", en:"Week", bn:"সপ্তাহ", pr:"শু"},
+
+{k:"人", en:"Person", bn:"মানুষ", pr:"হিতো / জিন"},
+{k:"男", en:"Man", bn:"পুরুষ", pr:"ওতোকো"},
+{k:"女", en:"Woman", bn:"মহিলা", pr:"ওন্না"},
+{k:"子", en:"Child", bn:"শিশু", pr:"কো"},
+{k:"父", en:"Father", bn:"বাবা", pr:"চিচি"},
+{k:"母", en:"Mother", bn:"মা", pr:"হাহা"},
+{k:"兄", en:"Older Brother", bn:"বড় ভাই", pr:"আনি"},
+{k:"姉", en:"Older Sister", bn:"বড় বোন", pr:"আনে"},
+{k:"弟", en:"Younger Brother", bn:"ছোট ভাই", pr:"ওতোতো"},
+{k:"妹", en:"Younger Sister", bn:"ছোট বোন", pr:"ইমোতো"},
+{k:"友", en:"Friend", bn:"বন্ধু", pr:"তোমো"},
+{k:"先", en:"Previous", bn:"আগে", pr:"সাকি"},
+{k:"生", en:"Life", bn:"জীবন", pr:"সেই / ইকি"},
+
+{k:"学", en:"Study", bn:"পড়াশোনা", pr:"মানাবু / গাকু"},
+{k:"校", en:"School", bn:"স্কুল", pr:"কো"},
+{k:"本", en:"Book", bn:"বই", pr:"হোন"},
+{k:"語", en:"Language", bn:"ভাষা", pr:"গো"},
+{k:"文", en:"Sentence", bn:"বাক্য", pr:"বুন"},
+{k:"字", en:"Letter", bn:"অক্ষর", pr:"জি"},
+{k:"読", en:"Read", bn:"পড়া", pr:"ইওমি"},
+{k:"書", en:"Write", bn:"লেখা", pr:"সো / কা"},
+{k:"話", en:"Speak", bn:"কথা বলা", pr:"হানাশি"},
+{k:"聞", en:"Hear", bn:"শোনা", pr:"বুন / কিকু"},
+
+{k:"上", en:"Up", bn:"উপরে", pr:"উয়ে"},
+{k:"下", en:"Down", bn:"নিচে", pr:"শিতা"},
+{k:"左", en:"Left", bn:"বাম", pr:"হিদারি"},
+{k:"右", en:"Right", bn:"ডান", pr:"মিগি"},
+{k:"中", en:"Inside", bn:"ভিতরে", pr:"নাকা"},
+{k:"外", en:"Outside", bn:"বাইরে", pr:"সোতো"},
+{k:"東", en:"East", bn:"পূর্ব", pr:"হিগাশি"},
+{k:"西", en:"West", bn:"পশ্চিম", pr:"নিশি"},
+{k:"南", en:"South", bn:"দক্ষিণ", pr:"মিনামি"},
+{k:"北", en:"North", bn:"উত্তর", pr:"কিতা"},
+{k:"国", en:"Country", bn:"দেশ", pr:"কুনি"},
+{k:"店", en:"Shop", bn:"দোকান", pr:"মিসে"},
+{k:"駅", en:"Station", bn:"স্টেশন", pr:"একি"},
+{k:"会", en:"Meet", bn:"মিলিত হওয়া", pr:"কাই / আউ"},
+{k:"社", en:"Company", bn:"কোম্পানি", pr:"শা"},
+
+{k:"食", en:"Eat", bn:"খাওয়া", pr:"শোকু / তাবেরু"},
+{k:"飲", en:"Drink", bn:"পান করা", pr:"ইন / নমু"},
+{k:"見", en:"See", bn:"দেখা", pr:"মি"},
+{k:"行", en:"Go", bn:"যাওয়া", pr:"কউ / ইকু"},
+{k:"来", en:"Come", bn:"আসা", pr:"রাই / কুরু"},
+{k:"帰", en:"Return", bn:"ফিরে আসা", pr:"কি / কায়েরু"},
+{k:"買", en:"Buy", bn:"কেনা", pr:"কাই"},
+{k:"売", en:"Sell", bn:"বিক্রি", pr:"উড়ি"},
+{k:"入", en:"Enter", bn:"প্রবেশ", pr:"ইরি / হাইরু"},
+{k:"出", en:"Exit", bn:"বের হওয়া", pr:"দে / দেরু"},
+{k:"休", en:"Rest", bn:"বিশ্রাম", pr:"কিউ / ইয়াসুমি"},
+/* Nature */
+{k:"山", en:"Mountain", bn:"পাহাড়", pr:"ইয়ামা"},
+{k:"川", en:"River", bn:"নদী", pr:"কাওয়া"},
+{k:"田", en:"Rice Field", bn:"ধান ক্ষেত", pr:"তা"},
+{k:"天", en:"Sky", bn:"আকাশ", pr:"তেন"},
+{k:"気", en:"Air / Spirit", bn:"বাতাস / মনোভাব", pr:"কি"},
+{k:"雨", en:"Rain", bn:"বৃষ্টি", pr:"আমে"},
+{k:"雪", en:"Snow", bn:"তুষার", pr:"ইউকি"},
+{k:"花", en:"Flower", bn:"ফুল", pr:"হানা"},
+{k:"空", en:"Sky / Empty", bn:"আকাশ / খালি", pr:"সোরা / কারা"},
+{k:"海", en:"Sea", bn:"সমুদ্র", pr:"উমি"},
+
+/* Colors & Adjectives */
+{k:"白", en:"White", bn:"সাদা", pr:"শিরো"},
+{k:"黒", en:"Black", bn:"কালো", pr:"কুরো"},
+{k:"赤", en:"Red", bn:"লাল", pr:"আকা"},
+{k:"青", en:"Blue", bn:"নীল", pr:"আও"},
+{k:"大", en:"Big", bn:"বড়", pr:"দাই  / ওওকি"},
+{k:"小", en:"Small", bn:"ছোট", pr:"শো  / চিসাই"},
+{k:"高", en:"High / Expensive", bn:"উচ্চ / দামি", pr:"কোও / তাকাই"},
+{k:"安", en:"Cheap / Safe", bn:"সস্তা / নিরাপদ", pr:"ইয়াসু"},
+{k:"新", en:"New", bn:"নতুন", pr:"শিন / আতারাশি"},
+{k:"古", en:"Old", bn:"পুরাতন", pr:"ফুরু"},
+{k:"長", en:"Long", bn:"লম্বা", pr:"চোও / নাগাই"},
+{k:"多", en:"Many", bn:"অনেক", pr:"ওও / তা"},
+{k:"少", en:"Few", bn:"কম", pr:"শোও / সুকুনাই"},
+
+/* Money & Others */
+{k:"円", en:"Yen / Circle", bn:"ইয়েন / বৃত্ত", pr:"এন"},
+{k:"名", en:"Name", bn:"নাম", pr:"না / মে"},
+{k:"何", en:"What", bn:"কি", pr:"নানি / নান"},
+{k:"間", en:"Between / Space", bn:"মাঝে / ফাঁক", pr:"কান  / আইদা"},
+{k:"電", en:"Electricity", bn:"বিদ্যুৎ", pr:"দেন"},
+{k:"車", en:"Car", bn:"গাড়ি", pr:"কুরুমা / শা"},
+{k:"家", en:"House / Home", bn:"বাড়ি", pr:"ইয়ে / কা"},
+{k:"族", en:"Family / Tribe", bn:"পরিবার", pr:"জোকু"},
+{k:"場", en:"Place", bn:"স্থান", pr:"বা"},
+{k:"所", en:"Place", bn:"জায়গা", pr:"তোকোরো / শো"},
+{k:"手", en:"Hand", bn:"হাত", pr:"তে"},
+{k:"足", en:"Foot / Leg", bn:"পা", pr:"আশি"},
+{k:"目", en:"Eye", bn:"চোখ", pr:"মে"},
+{k:"耳", en:"Ear", bn:"কান", pr:"মিমি"},
+{k:"口", en:"Mouth", bn:"মুখ", pr:"কুচি"}
+
+];
+
+const grid = document.getElementById("kanjiGrid");
+let currentKanji="日";
+
+kanjiData.forEach(item=>{
+    const div=document.createElement("div");
+    div.className="box";
+    div.innerText=item.k;
+
+    div.onclick=()=>{
+        currentKanji=item.k;
+
+        document.getElementById("kanjiChar").innerText=item.k;
+        document.getElementById("meaningEn").innerText="English: "+item.en;
+        document.getElementById("meaningBn").innerText="বাংলা: "+item.bn;
+        document.getElementById("pronounce").innerText="উচ্চারণ: "+item.pr;
+
+        document.getElementById("strokeArea").innerHTML="";
+
+        HanziWriter.create("strokeArea", item.k,{
+            width:260,
+            height:260,
+            padding:5,
+            strokeAnimationSpeed:0.4,
+            delayBetweenStrokes:400,
+            showOutline:true
+        }).animateCharacter();
+    };
+
+    grid.appendChild(div);
+});
+
+function playAudio(){
+    const msg = new SpeechSynthesisUtterance(currentKanji);
+    msg.lang="ja-JP";
+    msg.rate=0.45;
+    msg.pitch=1;
+    speechSynthesis.cancel();
+    speechSynthesis.speak(msg);
+}
+
+/* default load */
+grid.children[13].click();
+
+</script>
+
+</body>
+</html>
