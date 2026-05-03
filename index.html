@@ -136,6 +136,40 @@ button.lang-btn {
             background: #e69500;
             transform: scale(1.1);
         }
+.study-menu{
+margin: 5px 10px;
+
+    position: relative;
+    display: inline-block;
+}
+
+.study-submenu{
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: #111;
+    min-width: 220px;
+    z-index: 999;
+}
+
+.study-submenu a{
+    display: block;
+    color: green;
+    padding: 10px;
+    text-decoration: none;
+    text-align: left;
+}
+
+.study-submenu a:hover{
+    background: green;
+    color: black;
+}
+
+.study-menu:hover .study-submenu{
+    display: block;
+}
+
     </style>
 </head>
 <body>
@@ -161,6 +195,15 @@ button.lang-btn {
     <a href="#contact" id="nav-contact">Contact</a>
     <a href="#address" id="nav-address">Address</a>
     <a href="zen-ai.html" target="_blank">Zen AI</a>
+    <span class="study-menu">
+    <a href="#">Zen Study</a>
+    <span class="study-submenu">
+        <a href="Hiragana.html" target="_blank">Hiragana Practice</a>
+        <a href="Katakana.html" target="_blank">Katakana Practice</a>
+        <a href="Kanji.html" target="_blank">Kanji Practice</a>
+    </span>
+</span>
+
 </nav>
 
 <section id="about">
@@ -208,7 +251,7 @@ Our help doesn’t stop after you arrive — we assist with finding housing, und
 <section id="contact">
     <div class="content-box">
         <h2 id="contact-title">Online Application / Contact Form</h2>
-       <form action="https://formspree.io/f/mwkdbgqn---zen" method="POST">
+        <form action="https://formspree.io/f/mwkdbgqn" method="POST">
             <label id="form-name-label">Name:</label>
             <input type="text" name="name" required>
             <label id="form-email-label">Email:</label>
@@ -343,4 +386,3 @@ Our help doesn’t stop after you arrive — we assist with finding housing, und
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 </script>
-
