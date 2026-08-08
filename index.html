@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: Arial, 'Noto Sans JP', 'Yu Gothic', Meiryo, sans-serif;
             margin: 0;
             background-color: #000;
             color: #fff;
@@ -43,11 +43,32 @@
         nav a:hover {
             text-decoration: underline;
         }
-        .banner img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
+        .banner {
+    width: 100%;
+    height: 320px;
+    background: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.banner img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+}
+
+@media (max-width: 600px) {
+    .banner {
+        height: 200px;
+    }
+
+    .banner img {
+        height: 200px;
+    }
+}
         section {
             padding: 20px;
             max-width: 1000px;
@@ -60,6 +81,7 @@
             margin-bottom: 15px;
         }
         .content-box {
+            white-space: normal;
             background: rgba(20, 20, 20, 0.9);
             padding: 20px;
             border-radius: 10px;
@@ -170,7 +192,132 @@ margin: 5px 10px;
     display: block;
 }
 
-    </style>
+    #about-text { white-space: pre-line; line-height: 1.8; }
+        
+/* ===== Visa Success Stories ===== */
+.success-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 55px 20px;
+}
+.success-heading {
+    text-align: center;
+    margin-bottom: 30px;
+}
+.success-heading h2 {
+    color: #9d0fd0;
+    font-size: 2rem;
+    margin-bottom: 8px;
+}
+.success-heading p {
+    color: #ddd;
+    margin: 0 auto;
+    max-width: 750px;
+    line-height: 1.7;
+}
+.success-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+}
+.success-card {
+    background: #151515;
+    border: 1px solid rgba(255,165,0,.25);
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 6px 20px rgba(0,0,0,.45);
+    transition: transform .3s ease, box-shadow .3s ease;
+}
+.success-card:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 12px 30px rgba(255,165,0,.18);
+}
+.success-card img {
+    width: 100%;
+    height: 360px;
+    display: block;
+    object-fit: cover;
+    cursor: zoom-in;
+}
+.success-card-body {
+    padding: 15px 16px 18px;
+    text-align: center;
+}
+.success-card-body h3 {
+    margin: 0 0 7px;
+    color: #fff;
+    font-size: 1.05rem;
+}
+.visa-badge {
+    display: inline-block;
+    background: #159447;
+    color: #fff;
+    font-weight: 700;
+    font-size: .85rem;
+    padding: 6px 13px;
+    border-radius: 999px;
+}
+.success-note {
+    text-align: center;
+    color: #aaa;
+    font-size: .85rem;
+    margin-top: 25px;
+    line-height: 1.6;
+}
+
+/* Image lightbox */
+#successLightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: rgba(0,0,0,.9);
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+#successLightbox.show {
+    display: flex;
+}
+#successLightbox img {
+    max-width: 95vw;
+    max-height: 90vh;
+    object-fit: contain;
+    border-radius: 10px;
+    box-shadow: 0 0 35px rgba(0,0,0,.7);
+}
+#successLightboxClose {
+    position: fixed;
+    top: 18px;
+    right: 25px;
+    color: #fff;
+    font-size: 38px;
+    cursor: pointer;
+    line-height: 1;
+}
+@media (max-width: 900px) {
+    .success-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media (max-width: 600px) {
+    .success-section {
+        padding: 35px 12px;
+    }
+    .success-heading h2 {
+        font-size: 1.55rem;
+    }
+    .success-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+    .success-card img {
+        height: 430px;
+    }
+}
+
+</style>
 </head>
 <body>
 
@@ -190,13 +337,14 @@ margin: 5px 10px;
 </div>
 
 <nav>
+    <a href="#visa-success" id="nav-visa-success">Visa Success</a>
     <a href="#about" id="nav-about">About Us</a>
     <a href="#services" id="nav-services">Services</a>
     <a href="#contact" id="nav-contact">Contact</a>
     <a href="#address" id="nav-address">Address</a>
     <a href="zen-ai.html" target="_blank">Zen AI</a>
     <span class="study-menu">
-    <a href="#">Zen Study</a>
+    <a href="#" id="nav-study">Zen Study</a>
     <span class="study-submenu">
         <a href="Hiragana.html" target="_blank">Hiragana Practice</a>
         <a href="Katakana.html" target="_blank">Katakana Practice</a>
@@ -206,14 +354,284 @@ margin: 5px 10px;
 
 </nav>
 
+<!-- ===== Visa Success Stories ===== -->
+<section class="success-section" id="visa-success">
+    <div class="success-heading">
+        <h2 id="visa-success-title">Our Students' Visa Success Stories</h2>
+        <p>Dreamed in Bangladesh 🇧🇩 — Achieved in Japan 🇯🇵</p>
+    </div>
+
+    <div class="success-grid">
+        <div class="success-card">
+            <img src="1.jpg" alt="ZJEC student visa success" onclick="openSuccessImage(this.src)">
+            <div class="success-card-body"><span class="visa-badge">✓ VISA SUCCESS</span></div>
+        </div>
+        <div class="success-card">
+            <img src="2.jpg" alt="ZJEC student visa success" onclick="openSuccessImage(this.src)">
+            <div class="success-card-body"><span class="visa-badge">✓ VISA SUCCESS</span></div>
+        </div>
+        <div class="success-card">
+            <img src="3.jpg" alt="ZJEC student visa success" onclick="openSuccessImage(this.src)">
+            <div class="success-card-body"><span class="visa-badge">✓ VISA SUCCESS</span></div>
+        </div>
+        <div class="success-card">
+            <img src="4.jpg" alt="ZJEC student visa success" onclick="openSuccessImage(this.src)">
+            <div class="success-card-body"><span class="visa-badge">✓ VISA SUCCESS</span></div>
+        </div>
+        <div class="success-card">
+            <img src="5.jpg" alt="ZJEC student visa success" onclick="openSuccessImage(this.src)">
+            <div class="success-card-body"><span class="visa-badge">✓ VISA SUCCESS</span></div>
+        </div>
+        <div class="success-card">
+            <img src="6.jpg" alt="ZJEC student visa success" onclick="openSuccessImage(this.src)">
+            <div class="success-card-body"><span class="visa-badge">✓ VISA SUCCESS</span></div>
+        </div>
+        <div class="success-card">
+            <img src="7.jpg" alt="ZJEC student visa success" onclick="openSuccessImage(this.src)">
+            <div class="success-card-body"><span class="visa-badge">✓ VISA SUCCESS</span></div>
+        </div>
+        <div class="success-card">
+            <img src="8.jpg" alt="ZJEC student visa success" onclick="openSuccessImage(this.src)">
+            <div class="success-card-body"><span class="visa-badge">✓ VISA SUCCESS</span></div>
+        </div>
+        <div class="success-card">
+            <img src="9.jpg" alt="ZJEC student visa success" onclick="openSuccessImage(this.src)">
+            <div class="success-card-body"><span class="visa-badge">✓ VISA SUCCESS</span></div>
+        </div>
+    </div>
+
+    <p class="success-note">
+        Real student success moments from ZJEC. Student names and personal information can be added only with the student's consent.
+    </p>
+</section>
+
+<div id="successLightbox" onclick="closeSuccessImage()">
+    <span id="successLightboxClose">&times;</span>
+    <img id="successLightboxImage" src="" alt="Student success photo" onclick="event.stopPropagation()">
+</div>
+
+
 <section id="about">
     <div class="content-box">
         <h2 id="about-title">About Us</h2>
-        <p id="about-text">At Zen Japanese Education Consultancy (ZJEC), we believe that education and cultural exchange open doors to a brighter future. Our mission is to serve as a bridge between Bangladesh and Japan, providing comprehensive support for students, professionals, and families who aspire to study, work, or build a life in Japan.
+        <p id="about-text">At Zen Japanese Education Consultancy (ZJEC), we believe that education is more than learning a language—it is the foundation for building a successful and meaningful future in Japan.
 
-Founded by experts with deep knowledge of both countries’ educational and professional landscapes, ZJEC offers personalized guidance, ensuring that every client feels confident and well-prepared for their journey. We understand that studying or working abroad is not just a paperwork process — it’s a life-changing experience. That’s why we go beyond basic services, offering cultural insights, language support, and career counseling to help our clients thrive both in Japan and internationally.
+Established with a strong commitment to connecting Bangladesh and Japan, ZJEC has developed into a trusted education and career support organization dedicated to helping Bangladeshi students and professionals pursue educational and career opportunities in Japan.
 
-Whether you are a student aiming to enter a Japanese language school, a skilled worker looking for new career opportunities, or a family seeking a better future, ZJEC is here to guide you every step of the way. Our commitment to integrity, transparency, and client success has made us a trusted name in Bangladesh and Japan.</p>
+Our mission is to provide students with not only Japanese language education, but also the knowledge, discipline, cultural understanding, and practical preparation necessary to live, study, and work successfully in Japanese society.
+
+🇧🇩 A Trusted Japanese Education Organization in Bangladesh
+
+ZJEC is a government-registered Japanese language education organization in Bangladesh and has built a strong reputation for quality Japanese language education, student guidance, and Japan-related educational support.
+
+Our commitment to education, student development, and contribution to international human-resource development has enabled us to receive recognition and awards for our activities and contribution to the education sector.
+
+We continuously work to maintain a professional, transparent, and responsible educational environment where students can prepare themselves properly before taking the next step toward Japan.
+
+🇯🇵 A Bridge Between Bangladesh and Japan
+
+Our activities are not limited to Bangladesh.
+
+ZJEC also has a Japanese company, Zen Japanese G.K. (Zen Japanese 合同会社), in Japan. Through our presence in both countries, we are able to understand the expectations of Japanese educational institutions, companies, and society while also understanding the needs and challenges faced by Bangladeshi students.
+
+This Bangladesh–Japan connection allows us to provide more practical and reliable support throughout a student's journey—from initial counseling and Japanese language preparation to departure and life in Japan.
+
+🎓 1,100+ Students Successfully Connected to Japan
+
+One of our proudest achievements is that more than 1,100 students have so far travelled to Japan through our network and support.
+
+Behind every student is a different dream—a university education, a Japanese language school, a professional career, or a better future.
+
+We therefore believe that our responsibility does not end when a student receives a visa.
+
+Our goal is to prepare students properly before they leave Bangladesh and continue supporting them after they arrive in Japan.
+
+🏫 Collaboration with Leading Japanese Schools
+
+ZJEC works with Class 1 / top-category Japanese language schools and educational institutions in Japan, giving our students access to quality educational pathways and reliable institutional support.
+
+Our professional approach, student preparation, documentation standards, and understanding of Japanese educational expectations have helped us establish relationships with a growing number of Japanese schools.
+
+Representatives from several Japanese educational institutions have also visited our Bangladesh office and expressed their appreciation for our professional environment, student support system, and commitment to maintaining high standards.
+
+We warmly welcome Japanese language schools, universities, vocational schools, and educational organizations to visit our Bangladesh office and explore opportunities for cooperation.
+
+🤝 Welcome to Japanese Schools & Companies
+
+ZJEC is open to building long-term partnerships with organizations that share our commitment to responsible international education and human-resource development.
+
+We welcome:
+
+🇯🇵 Japanese Language Schools
+🎓 Universities & Vocational Schools
+🏢 Japanese Companies
+👷 SSW & TITP-related organizations
+💼 Recruitment and human-resource companies
+🌏 International education organizations
+💰 Companies and investors interested in Bangladesh
+🤝 Organizations interested in Bangladesh–Japan business cooperation
+
+Our Bangladesh office is always open for professional discussions, institutional meetings, partnership proposals, and business collaboration.
+
+We believe that strong relationships create stronger opportunities for students and businesses in both countries.
+
+🇯🇵 Support for Bangladeshi Students in Japan
+
+Our relationship with students does not end after they leave Bangladesh.
+
+Through our Japan-side network and presence, we strive to provide practical support to Bangladeshi students living in Japan.
+
+Our support may include guidance related to:
+
+Daily life in Japan
+Educational matters
+Communication and language difficulties
+Cultural adaptation
+General living guidance
+School-related communication
+Career and future planning
+Emergency or difficult situations where appropriate
+
+We want our students to feel that they have a reliable support network even after arriving in Japan.
+
+👨‍💼 Leadership & Community Contribution
+
+ZJEC is led by Chairman & Founder Md. Nazmus Sakib (SAKIB ZEN), who is actively involved in Bangladesh–Japan educational and community activities.
+
+He also serves as Treasurer of BSSAJ (Bangladeshi Students' Support Association in Japan), an organization that works to support Bangladeshi students and community members in Japan.
+
+This involvement provides valuable insight into the real challenges faced by Bangladeshi students in Japan and strengthens our commitment to responsible student support.
+
+🤝 Strong Bangladesh–Japan Network
+
+Over the years, ZJEC has developed relationships with educational institutions, organizations, professionals, and stakeholders in both Bangladesh and Japan.
+
+We are committed to maintaining constructive relationships with relevant government and institutional stakeholders and have received cooperation and support for our Bangladesh–Japan education and human-resource development activities.
+
+Our objective is simple:
+
+To create a reliable and responsible pathway between Bangladesh and Japan.
+
+💰 Transparent & Student-Friendly Policy
+
+We believe that students and their families deserve complete transparency.
+
+Therefore, ZJEC follows a clear and student-focused approach to fees and procedures.
+
+Depending on the program and applicable conditions:
+
+No service charge is required before visa issuance.
+No file-opening charge.
+No registration charge.
+Scholarship opportunities may be available based on academic results and applicable institutional criteria.
+Students may be eligible for up to 100% scholarship opportunities, depending on their results, school, program, and scholarship conditions.
+
+We believe that financial transparency is an essential part of building trust with students and their families.
+
+🎓 Scholarship Opportunities
+
+We strongly believe that talented and hardworking students should have access to quality education regardless of their financial background.
+
+For eligible students, we provide guidance regarding scholarship opportunities, including scholarships that may cover up to 100% of applicable tuition/course fees, depending on academic performance and the conditions established by the relevant educational institution.
+
+Our counseling team helps students understand the eligibility requirements and choose appropriate opportunities.
+
+⏰ Discipline, Punctuality & Japanese Culture
+
+Studying in Japan requires much more than knowing Japanese grammar.
+
+Students must understand punctuality, discipline, responsibility, respect, communication etiquette, workplace manners, social rules, and Japanese culture.
+
+This is why cultural education is an important part of our preparation.
+
+At ZJEC, we strongly emphasize:
+
+Time Management + Discipline + Japanese Language + Culture + Responsibility
+
+Before sending students to Japan, we work to ensure that they understand the importance of Japanese social and educational norms.
+
+Our goal is not simply to send students to Japan.
+
+Our goal is to prepare students to succeed after they arrive in Japan.
+
+🌏 Our Responsibility
+
+We understand that sending a student overseas is a major responsibility.
+
+A student represents not only themselves, but also their family, their educational institution, their country, and the organization that supported them.
+
+Therefore, we carefully emphasize:
+
+Honest counseling
+Proper documentation
+Japanese language preparation
+Cultural understanding
+Interview preparation
+Discipline and punctuality
+Realistic career guidance
+Responsible communication
+Continuous student support
+
+We believe that responsible recruitment and proper preparation create long-term trust between Bangladeshi students and Japanese institutions.
+
+🌸 Why Japanese Institutions Choose to Work With ZJEC
+
+Our growing relationships with Japanese educational institutions are built on several principles:
+
+✔ Professional Communication
+We respect Japanese business etiquette, deadlines, procedures, and communication standards.
+
+✔ Student Quality
+We focus on preparing students linguistically, academically, and culturally before introducing them to Japanese institutions.
+
+✔ Transparency
+We believe in clear communication with students, families, schools, and partner organizations.
+
+✔ Cultural Preparation
+Students receive guidance about Japanese culture, discipline, manners, and social expectations.
+
+✔ Bangladesh–Japan Presence
+With operations and networks in both Bangladesh and Japan, we can understand the needs of both sides.
+
+✔ Long-Term Partnership
+We seek sustainable relationships rather than short-term recruitment.
+
+🇯🇵 A Warm Invitation to Our Japanese Partners
+
+We sincerely welcome Japanese educational institutions and companies to visit Zen Japanese Education Consultancy in Bangladesh.
+
+We would be pleased to introduce our organization, meet your representatives, discuss student recruitment opportunities, exchange ideas, and explore long-term cooperation.
+
+We also welcome companies involved in SSW, TITP, recruitment, human resources, and international business, as well as organizations and investors interested in exploring opportunities in Bangladesh.
+
+Our door is always open for meaningful cooperation.
+
+🌱 Our Commitment
+
+At ZJEC, our vision goes beyond sending students from Bangladesh to Japan.
+
+We want to build a sustainable Bangladesh–Japan education and human-resource development ecosystem where:
+
+Students receive quality preparation →
+Japanese institutions receive well-prepared students →
+Companies receive responsible human resources →
+Students build successful careers →
+Both Bangladesh and Japan benefit.
+
+This is the future we are working toward.
+
+🇧🇩🤝🇯🇵 ZJEC — Connecting Dreams, Education & Opportunities
+
+From the first Japanese character a student learns in Bangladesh to their first day at a Japanese school or workplace, ZJEC aims to stand beside them throughout the journey.
+
+We are proud of the trust placed in us by students, parents, Japanese educational institutions, companies, and our partners.
+
+And we are ready to welcome more schools, companies, organizations, and investors who share our vision of building a stronger and more meaningful connection between Bangladesh and Japan.
+
+Zen Japanese Education Consultancy (ZJEC)
+Building Bridges Between Bangladesh & Japan.
+
+Learn. Prepare. Connect. Succeed. 🇯🇵</p>
     </div>
 </section>
 
@@ -261,8 +679,8 @@ Our help doesn’t stop after you arrive — we assist with finding housing, und
             <label id="form-service-label">Select Service:</label>
             <select name="service">
                 <option value="language-course">Language Course</option>
-                <option value="visa-support">Visa Support</option>
-                <option value="counseling">Counseling</option>
+                <option value="visa-support">Counseling</option>
+                <option value="counseling">日本語学校からのお問い合わせ</option>
             </select>
             <label id="form-message-label">Message / Details:</label>
             <textarea name="message" rows="4" required></textarea>
@@ -303,8 +721,33 @@ Our help doesn’t stop after you arrive — we assist with finding housing, und
             navServices: "Services",
             navContact: "Contact",
             navAddress: "Address",
+            study: "Zen Study",
             aboutTitle: "About Us",
-            aboutText: "At Zen Japanese Education Consultancy (ZJEC), we believe that education and cultural exchange open doors to a brighter future. Our mission is to serve as a bridge between Bangladesh and Japan, providing comprehensive support for students, professionals, and families who aspire to study, work, or build a life in Japan.\n\nFounded by experts with deep knowledge of both countries’ educational and professional landscapes, ZJEC offers personalized guidance, ensuring that every client feels confident and well-prepared for their journey. We understand that studying or working abroad is not just a paperwork process — it’s a life-changing experience. That’s why we go beyond basic services, offering cultural insights, language support, and career counseling to help our clients thrive both in Japan and internationally.\n\nWhether you are a student aiming to enter a Japanese language school, a skilled worker looking for new career opportunities, or a family seeking a better future, ZJEC is here to guide you every step of the way. Our commitment to integrity, transparency, and client success has made us a trusted name in Bangladesh and Japan.",
+            navVisaSuccess: "Visa Success",
+            visaSuccessTitle: "Our Students' Visa Success Stories",
+            aboutText: `At Zen Japanese Education Consultancy (ZJEC), we believe that education and cultural exchange open doors to a brighter future. Our mission is to serve as a bridge between Bangladesh and Japan, providing comprehensive support for students, professionals, and families who aspire to study, work, or build a life in Japan.
+
+Founded with a strong commitment to connecting Bangladesh and Japan, ZJEC provides Japanese language education, educational counseling, career guidance, visa-related support, cultural orientation, and pre-departure preparation. We understand that studying or working abroad is not simply a paperwork process—it is a life-changing experience. That is why we focus on preparing students not only for admission and visa procedures, but also for real life in Japan.
+
+ZJEC is a government-registered Japanese language education organization in Bangladesh and has built a strong reputation for quality Japanese language education, student guidance, and Japan-related educational support. Our activities in education, student development, and international human-resource exchange have also received recognition and awards.
+
+Our organization has a presence in both Bangladesh and Japan. In Japan, we operate through Zen Japanese G.K. (Zen Japanese 合同会社), enabling us to understand the expectations of Japanese schools, companies, and society while also understanding the needs and challenges of Bangladeshi students.
+
+To date, more than 1,100 students have travelled to Japan through our network and support. We work with leading and Class 1-category Japanese language schools and educational institutions in Japan. Representatives from several Japanese schools have visited our Bangladesh office and expressed their appreciation for our professional environment, student support system, and commitment to quality.
+
+Our Chairman and Founder, Md. Nazmus Sakib (SAKIB ZEN), is also involved in Bangladesh–Japan community activities and serves as Treasurer of BSSAJ (Bangladeshi Students' Support Association in Japan), an organization that supports Bangladeshi students in Japan. This experience helps us understand the practical challenges students may face after arriving in Japan and strengthens our commitment to continuous support.
+
+ZJEC welcomes Japanese language schools, universities, vocational schools, Japanese companies, SSW and TITP-related organizations, recruitment and human-resource companies, and organizations or investors interested in Bangladesh–Japan cooperation. We warmly invite Japanese schools and companies to visit our Bangladesh office for institutional meetings, student recruitment discussions, business cooperation, and long-term partnership opportunities.
+
+We place great importance on transparency and student-friendly policies. Depending on the program and applicable conditions, students do not need to pay a service charge before visa issuance, and we do not charge file-opening or registration fees. Eligible students may also receive scholarship opportunities based on academic results, including opportunities of up to 100% of applicable tuition or course fees depending on the institution and scholarship conditions.
+
+Most importantly, ZJEC strongly emphasizes Japanese culture, discipline, punctuality, manners, responsibility, and communication. We believe that learning Japanese language alone is not enough to succeed in Japan. Students must also understand Japanese society and be prepared to respect its rules and culture.
+
+Our goal is not simply to send students to Japan. Our goal is to prepare responsible, culturally aware, motivated, and well-trained students who can study, work, and build a successful future in Japan.
+
+ZJEC is committed to building a sustainable Bangladesh–Japan education and human-resource development network where students receive quality preparation, Japanese institutions receive well-prepared students, companies can connect with responsible human resources, and both Bangladesh and Japan benefit from meaningful international cooperation.
+
+Learn. Prepare. Connect. Succeed. 🇧🇩🤝🇯🇵`,
             servicesTitle: "Our Services",
             servicesList: "✅ Japanese Language Courses (N5–N3):\nWe offer expert-led Japanese language classes, helping you prepare for JLPT levels N5 to N3.\n\n✅ Student & Job Visa Assistance:\nFull support to help you secure your student or work visa.\n\n✅ JLPT & NAT Test Preparation:\nIntensive courses and practice exams to prepare for the Japanese Language Proficiency Test (JLPT) and the NAT Test.\n\n✅ Interview & Resume Coaching:\nHelp with professional Japanese-style resumes and interview preparation.\n\n✅ Educational & Career Counseling:\nGuidance in choosing the right educational institution or career path.\n\n✅ Air Ticket & Travel Support:\nAssistance with flight bookings and pre-departure arrangements.\n\n✅ Post-Arrival Support:\nHelp with housing, local systems, and adjusting to life in Japan.",
             contactTitle: "Online Application / Contact Form",
@@ -327,8 +770,33 @@ Our help doesn’t stop after you arrive — we assist with finding housing, und
             navServices: "サービス",
             navContact: "お問い合わせ",
             navAddress: "住所",
+            navVisaSuccess: "ビザ取得実績",
+            study: "学習",
             aboutTitle: "私たちについて",
-            aboutText: "Zen Japanese Education Consultancy (ZJEC) は、教育と文化交流が未来を開くと信じています。私たちはバングラデシュと日本をつなぎ、学び、働き、暮らしたい方々を全面サポートします。\n\n経験豊富な専門家が、個別にガイダンスを行い、自信を持って準備できるようお手伝いします。海外での挑戦は人生を変える経験。文化理解、語学支援、キャリア相談まで、幅広く支援します。\n\n学生、専門職、家族の皆様、ZJEC はあなたの夢を全力で応援します。",
+ visaSuccessTitle: "学生のビザ取得実績",
+            aboutText: `Zen Japanese Education Consultancy（ZJEC）は、教育と文化交流がより良い未来への扉を開くと考えています。私たちの使命は、バングラデシュと日本をつなぐ架け橋となり、日本で学び、働き、将来の可能性を広げたい学生、専門人材、そしてご家族に対して、総合的なサポートを提供することです。
+
+ZJECは、バングラデシュと日本をつなぐことを大切な使命として、日本語教育、進学カウンセリング、キャリア相談、ビザ関連サポート、日本文化教育、渡日前準備など、幅広いサービスを提供しています。私たちは、海外留学や就職は単なる書類手続きではなく、人生を変える大きな経験であると考えています。そのため、入学やビザの手続きだけではなく、日本で実際に生活・学習・就労するための準備にも力を入れています。
+
+ZJECは、バングラデシュにおいて政府登録の日本語教育機関として、日本語教育、学生支援、日本関連の教育・キャリア支援に取り組んでいます。また、教育活動、学生育成、国際人材交流への取り組みについて、評価・表彰を受けた実績もあります。
+
+ZJECはバングラデシュと日本の双方にネットワークを持っています。日本では、Zen Japanese G.K.（Zen Japanese 合同会社）を運営し、日本の学校、企業、社会が求める人材像を理解すると同時に、バングラデシュの学生が抱える課題やニーズも理解しています。
+
+これまでに、ZJECのネットワークとサポートを通じて、1,100名以上の学生が日本へ渡航しています。また、日本国内のクラス1カテゴリーを含む優良な日本語学校・教育機関とも連携しています。これまでに複数の日本の学校関係者がバングラデシュのZJECオフィスを訪問し、私たちの教育環境、学生サポート体制、そして質を重視した運営について高い関心を示していただいています。
+
+Founder & ChairmanのMd. Nazmus Sakib（SAKIB ZEN）は、バングラデシュと日本のコミュニティ・教育交流活動にも積極的に携わっており、BSSAJ（Bangladeshi Students' Support Association in Japan）のTreasurer（財務担当）も務めています。こうした活動を通じて、日本で生活するバングラデシュ人学生が直面するさまざまな課題を理解し、日本到着後の継続的なサポートにもつなげています。
+
+ZJECは、日本語学校、大学、専門学校、日本企業、特定技能（SSW）・技能実習（TITP）関連企業、人材関連企業、そしてバングラデシュと日本の教育・ビジネス交流に関心をお持ちの企業・投資家の皆様との連携を歓迎しています。日本の学校・企業の皆様には、バングラデシュのZJECオフィスへのご訪問を心より歓迎し、学校説明、学生募集、業務提携、ビジネス協力、長期的なパートナーシップについてお話しできれば幸いです。
+
+私たちは透明性と学生に配慮したサービスを大切にしています。プログラムや提携教育機関の条件によって異なりますが、ビザ取得前のサービス料金を原則として請求せず、ファイルオープン料金や登録料金も設けていません。また、学業成績などの条件を満たす学生には、学校・コースの条件に応じて、最大100％の授業料・コース費用等を対象とする奨学金制度をご案内できる場合があります。
+
+そして何よりも、ZJECは日本語だけではなく、日本文化、規律、時間厳守、マナー、責任感、コミュニケーションを重視しています。日本で成功するためには、日本語を学ぶだけでは十分ではありません。日本社会のルールや文化を理解し、それを尊重する姿勢が重要です。
+
+私たちの目的は、単に学生を日本へ送り出すことではありません。日本で学び、働き、将来のキャリアを築くことができる、責任感があり、文化を理解し、意欲と準備の整った人材を育てることです。
+
+ZJECは、学生が質の高い準備を受け、日本の教育機関が十分に準備された学生を受け入れ、日本企業が責任感のある人材とつながり、そしてバングラデシュと日本の双方が国際交流を通じて発展できる、持続可能な教育・人材交流ネットワークの構築を目指しています。
+
+Learn. Prepare. Connect. Succeed. 🇧🇩🤝🇯🇵`,
             servicesTitle: "サービス内容",
             servicesList: "✅ 日本語コース（N5〜N3）:\nJLPT N5〜N3 レベルの日本語クラス。\n\n✅ 学生・就労ビザサポート:\nビザ取得の全面サポート。\n\n✅ JLPT・NAT試験対策:\n集中講座と模擬試験。\n\n✅ 面接・履歴書指導:\n日本式履歴書作成と面接対策。\n\n✅ 進学・キャリア相談:\n最適な学校・キャリア選択のアドバイス。\n\n✅ 航空券・渡航サポート:\n航空券手配と出発前準備。\n\n✅ 到着後サポート:\n住居探し、生活サポート、現地システム理解。",
             contactTitle: "オンライン申し込み・お問い合わせ",
@@ -353,6 +821,9 @@ Our help doesn’t stop after you arrive — we assist with finding housing, und
         document.getElementById('nav-services').innerText = langData[lang].navServices;
         document.getElementById('nav-contact').innerText = langData[lang].navContact;
         document.getElementById('nav-address').innerText = langData[lang].navAddress;
+        document.getElementById('nav-visa-success').innerText = langData[lang].navVisaSuccess;
+        document.getElementById('visa-success-title').innerText = langData[lang].visaSuccessTitle;
+        document.getElementById('nav-study').innerText = langData[lang].study;
         document.getElementById('about-title').innerText = langData[lang].aboutTitle;
         document.getElementById('about-text').innerText = langData[lang].aboutText;
         document.getElementById('services-title').innerText = langData[lang].servicesTitle;
@@ -371,7 +842,10 @@ Our help doesn’t stop after you arrive — we assist with finding housing, und
         document.getElementById('address-jp-text').innerHTML = langData[lang].addressJpText;
     }
 
-        // Show/hide Back to Top button
+        // Default language
+    switchLang('en');
+
+    // Show/hide Back to Top button
     window.onscroll = function() {
         const btn = document.getElementById('backToTop');
         if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
@@ -385,4 +859,19 @@ Our help doesn’t stop after you arrive — we assist with finding housing, und
     function scrollToTop() {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }
+
+function openSuccessImage(src) {
+    document.getElementById('successLightboxImage').src = src;
+    document.getElementById('successLightbox').classList.add('show');
+    document.body.style.overflow = 'hidden';
+}
+function closeSuccessImage() {
+    document.getElementById('successLightbox').classList.remove('show');
+    document.getElementById('successLightboxImage').src = '';
+    document.body.style.overflow = '';
+}
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeSuccessImage();
+});
+
 </script>
